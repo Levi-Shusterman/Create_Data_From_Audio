@@ -79,7 +79,7 @@ def analyze_song(filepath):
 
     
 def get_song_stats(filepath): 
-    song_list = parse_input_file(filepath + 'description.txt')
+    song_list = parse_input_file(filepath + 'description.txt')        #TODO replace 'test' with 'description
     song_stats = []
     for song in song_list:
         song_stats.append(analyze_song(filepath + song))
