@@ -27,21 +27,25 @@ class ParamMethods(object):
                 print "%s != %s ; incorrect keys received\n" % (key, key2)
             num_of_params += 1
 
-        return grade / num_of_params # return the average
+        return (grade/num_of_params) # return the average
 
     # assign a function to grade two parameters based on the name of the dict key
     # this is meant to allow us to change the parameters that we use flexibly
     def _assign_function(self, key_from_dict):
-        if key_from_dict in 'grade_genre':
-            return self._grade_genre
-        elif key_from_dict in 'grade_key':
+        if key_from_dict in 'genre':
+            return self._grade_notes
+        elif key_from_dict in 'key':
             return self._grade_key
-        elif key_from_dict in 'grade_bpm':
+        elif key_from_dict in 'bpm':
             return self._grade_bpm
+        else:
+            return self._zero_func
 
-    def _grade_genre(self):
+    def _grade_notes(self):
         return 1
     def _grade_key(self):
         return 1
     def _grade_bpm(self):
         return 1
+    def _zero_func(self):
+        return 0

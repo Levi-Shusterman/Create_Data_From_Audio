@@ -27,8 +27,7 @@ class CompileMatrices(self):
             while y <= size:
 
                 self.overall_matrix[x][y] = \
-                ParamMethods.grade_parameters( self.all_song_data[x]['middle'],
+                grader.grade_parameters( self.all_song_data[x]['middle'],
                                     self.all_song_data[y]['middle'] )
                 y = y+1
             x = x+1
-
