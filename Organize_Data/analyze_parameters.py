@@ -1,6 +1,8 @@
 
 # Class that is meant to evaluate parameters and return a grade
 # for two song data that are passed to it
+import math
+
 class ParamMethods(object):
 
     def __init__(self, genre = 1, key = 1, bpm = 1):
@@ -41,11 +43,56 @@ class ParamMethods(object):
         else:
             return self._zero_func
 
-    def _grade_notes(self):
-        return 1
-    def _grade_key(self):
-        return 1
-    def _grade_bpm(self):
-        return 1
+    
+    
+    circle_of_fifths = {'C': 0, 'Am' : 0,
+                        'G' : 1, 'Em': 1, 
+                        'D' : 2, 'Bm': 2, 
+                        'A' : 3, 'F#m': 3, 'Gbm' : 3,
+                        'E' : 4, 'C#m': 4, 'Dbm' : 4,
+                        'B' : 5, 'G#m' : 5, 'Abm' : 5, 
+                        'Gb' : 6, 'Ebm', 6, 'F#' : 6,
+                        'Db': -5, 'Bbm': -5, 'C#' : -5,
+                        'Ab' : -4, 'Fm' : -4, 'G#' : -4,
+                        'Eb' : -3, 'Cm' : -3, 'D#' : -3,
+                        'Bb' : -2, 'Gm' : -2, 'A#' : -2,
+                        'F' : -1, 'Dm': -1}
+    
+    
+    def _grade_notes(self, notes1, notes2):
+        score = 0
+        if self.song1['key'] == self.song2['key']
+            return 99
+        else:
+            bigger = {}
+            smaller = {}
+            if len(notes1) > len(notes2):
+                bigger = notes1
+                smaller = notes2
+            else:
+                bigger = notes2
+                smaller = notes1
+
+            for note in bigger:
+                if note in smaller:
+                    score += 1
+                else:
+                    score -= 1
+        return 50 + score
+
+    def _grade_key(self, key1, key2):
+        val1 = circle_of_fifths[key1]
+        val2 = circle_of_fifths[key2]
+        dif = abs(val1 - val2)
+        if dif > 6:
+            dif = 6 - dif % 6
+        
+        return 99 - 10 * dif
+
+    def _grade_bpm(self, bpm1, bpm2):
+        normalized1 = bpm1/100
+        normalized2 = bpm2/100
+        return 99 - abs(normalized1 - normalized2)
+    
     def _zero_func(self):
         return 0
