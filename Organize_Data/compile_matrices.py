@@ -16,6 +16,8 @@ class CompileMatrices():
     def compile_matrices(self):
         size = self.num_of_songs
         self.overall_matrix = [[0 for x in range(size)] for x in range(size)]
+        self.transition_matrix = [[0 for x in range(size)] for x in range(size)]
+
         grader = ParamMethods()
         x = 0
 
@@ -26,6 +28,8 @@ class CompileMatrices():
                 self.overall_matrix[x][y] = \
                 grader.grade_parameters( self.all_song_data[x]['middle'],
                                     self.all_song_data[y]['middle'] )
+
+                
                 y = y+1
             x = x+1
         print 2

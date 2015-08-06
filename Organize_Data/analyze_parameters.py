@@ -28,7 +28,7 @@ class ParamMethods(object):
                 param_func_grade = self._assign_function(key) # which parameter to analyze?
                 grade += param_func_grade() # grade the overlap, of two things, such as bpm
             else:
-                print "%s != %s ; incorrect keys received\n" % (key, key2)
+                print "%s ; inconsistent keys received\n" % (key)
             num_of_params += 1
 
         return (grade/num_of_params) # return the average
