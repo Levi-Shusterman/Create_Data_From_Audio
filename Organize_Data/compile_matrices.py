@@ -21,10 +21,16 @@ class CompileMatrices():
 
         while x < size:
             y = x + 1
-            while y <= size:
+            while y < size:
 
                 self.overall_matrix[x][y] = \
                 grader.grade_parameters( self.all_song_data[x]['middle'],
                                     self.all_song_data[y]['middle'] )
                 y = y+1
             x = x+1
+        print 2
+
+def test():
+    X = CompileMatrices()
+    X.compile_matrices()
+test()
