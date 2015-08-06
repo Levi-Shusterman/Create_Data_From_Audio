@@ -27,7 +27,7 @@ class ParamMethods(object):
                 value2 = second_song[key]
                 # analyze the parameter
                 param_func_grade = self._assign_function(key) # which parameter to analyze?
-                grade += param_func_grade() # grade the overlap, of two things, such as bpm
+                grade += 1 # param_func_grade() # grade the overlap, of two things, such as bpm
             else:
                 print "%s ; inconsistent keys received\n" % (key)
             num_of_params += 1
@@ -46,11 +46,6 @@ class ParamMethods(object):
         else:
             return self._zero_func
 
-    
-    
-
-    
-    
     def _grade_notes(self, notes1, notes2):
         score = 0
         if self.song1['key'] == self.song2['key']:

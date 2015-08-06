@@ -1,17 +1,25 @@
 from compile_matrices import CompileMatrices
 
-def _get_matrix(filepath):
-    X = CompileMatrices(filepath)
-    return X.overall_matrix_give()
+def _get_matrix():
+    X = CompileMatrices()
+    return X.overall_matrix_give(), X.transition_matrix_give()
 
-def get_overall_matrix_api(filepath):
-    matrix = _get_matrix(filepath)
+def get_matrix_api():
+    matrix, trans_matrix = _get_matrix()
 
-    with open('matrix_file', 'w') as f:
+    with open('matrix.txt', 'w') as f:
         for row in matrix:
             for value in row:
                 f.write(str(value))
                 f.write(' ')
             f.write('\n')
 
-get_overall_matrix_api()
+        f.write('\n')
+
+        for row in trans_matrix:
+            for value in row:
+                f.write(str(value))
+                f.write(' ')
+            f.write('\n')
+
+get_matrix_api()

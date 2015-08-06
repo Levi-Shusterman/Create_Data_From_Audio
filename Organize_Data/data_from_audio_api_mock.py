@@ -11,6 +11,7 @@ def get_song_stats():
         x = {}
         x['middle'] = song
         x['end'] = song
+        x['begin'] = song
 
         list_song_stats.append(x)
 
