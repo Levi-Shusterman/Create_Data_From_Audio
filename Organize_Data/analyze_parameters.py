@@ -1,7 +1,6 @@
 
 # Class that is meant to evaluate parameters and return a grade
 # for two song data that are passed to it
-import math
 
 class ParamMethods(object):
 
@@ -49,23 +48,12 @@ class ParamMethods(object):
 
     
     
-    circle_of_fifths = {'C': 0, 'Am' : 0,
-                        'G' : 1, 'Em': 1, 
-                        'D' : 2, 'Bm': 2, 
-                        'A' : 3, 'F#m': 3, 'Gbm' : 3,
-                        'E' : 4, 'C#m': 4, 'Dbm' : 4,
-                        'B' : 5, 'G#m' : 5, 'Abm' : 5, 
-                        'Gb' : 6, 'Ebm', 6, 'F#' : 6,
-                        'Db': -5, 'Bbm': -5, 'C#' : -5,
-                        'Ab' : -4, 'Fm' : -4, 'G#' : -4,
-                        'Eb' : -3, 'Cm' : -3, 'D#' : -3,
-                        'Bb' : -2, 'Gm' : -2, 'A#' : -2,
-                        'F' : -1, 'Dm': -1}
+
     
     
     def _grade_notes(self, notes1, notes2):
         score = 0
-        if self.song1['key'] == self.song2['key']
+        if self.song1['key'] == self.song2['key']:
             return 99
         else:
             bigger = {}
@@ -85,6 +73,21 @@ class ParamMethods(object):
         return 50 + score
 
     def _grade_key(self, key1, key2):
+
+        circle_of_fifths = {'C': 0, 'Am' : 0,
+                        'G' : 1, 'Em': 1,
+                        'D' : 2, 'Bm': 2,
+                        'A' : 3, 'F#m': 3, 'Gbm' : 3,
+                        'E' : 4, 'C#m': 4, 'Dbm' : 4,
+                        'B' : 5, 'G#m' : 5, 'Abm' : 5,
+                        'Gb' : 6, 'Ebm': 6, 'F#' : 6,
+                        'Db' : -5, 'Bbm': -5, 'C#' : -5,
+                        'Ab' : -4, 'Fm' : -4, 'G#' : -4,
+                        'Eb' : -3, 'Cm' : -3, 'D#' : -3,
+                        'Bb' : -2, 'Gm' : -2, 'A#' : -2,
+                        'F' : -1, 'Dm': -1 }
+
+
         val1 = circle_of_fifths[key1]
         val2 = circle_of_fifths[key2]
         dif = abs(val1 - val2)
