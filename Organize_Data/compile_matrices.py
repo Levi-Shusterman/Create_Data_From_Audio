@@ -32,8 +32,6 @@ class CompileMatrices(self):
                 y = y+1
             x = x+1
 
-
-
     def compile_overall_matrix(self):
 
 
