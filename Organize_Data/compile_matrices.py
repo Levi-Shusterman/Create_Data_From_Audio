@@ -54,10 +54,24 @@ class CompileMatrices():
                 y = y+1
             x = x+1
 
-    def overall_matrix_give(self):
+    def _overall_matrix_give(self):
         return self.overall_matrix
 
-    def transition_matrix_give(self):
+    def _transition_matrix_give(self):
         return self.transition_matrix
 
+    def _aggregate_matrix(self):
+        over_matrix = self._overall_matrix_give()
+        trans_matrix = self._transition_matrix_give()
 
+        size = self.num_of_songs
+        matrix = [[0 for x in range(size)] for x in range(size)]
+
+        for x in range(0, size):
+            for y in range(0, size):
+                matrix[x][y] = over_matrix[x][y] + trans_matrix[x][y]
+
+        return matrix
+
+    def give_matrix(self):
+        return self._aggregate_matrix()
