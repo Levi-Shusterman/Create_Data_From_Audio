@@ -69,7 +69,7 @@ class CompileMatrices():
 
         for x in range(0, size):
             for y in range(0, size):
-                matrix[x][y] = over_matrix[x][y] + trans_matrix[x][y]
+                matrix[x][y] = (over_matrix[x][y] + trans_matrix[x][y] ) / 2
 
         return matrix
 

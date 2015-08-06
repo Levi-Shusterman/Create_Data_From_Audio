@@ -9,7 +9,7 @@ def get_matrix_api():
     filepath = sys.argv[1] 
     matrix = _get_matrix(filepath)
 
-    with open('matrix_file', 'w') as f:
+    with open('matrix.txt', 'w') as f:
         for row in matrix:
             for value in row:
                 f.write(str(value))
