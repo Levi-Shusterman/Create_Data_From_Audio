@@ -10,10 +10,13 @@ def get_song_stats():
 
         x = {}
         x['middle'] = song
+        x['end'] = song
 
-        list_song_stats.append(song)
+        list_song_stats.append(x)
 
     return list_song_stats
 
 def get_num_of_songs():
     return 20
+
+get_song_stats()

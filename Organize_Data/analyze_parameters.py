@@ -19,14 +19,18 @@ class ParamMethods(object):
         grade = 0.0
         num_of_params = 0.0
 
+        self.song_one = first_song
+        self.song_two = second_song
+
         # compare two songs
-        for (key, value), (key2, value2) in first_song.iteritems(), second_song.iteritems():
-            if key == key2:
+        for (key, value) in first_song.iteritems():
+            if key in second_song:
+                value2 = second_song[key]
                 # analyze the parameter
-                param_func_grade = self.assign_function(key) # which parameter to analyze?
-                grade += param_func_grade(value, value2) # grade the overlap, of two things, such as bpm
+                param_func_grade = self._assign_function(key) # which parameter to analyze?
+                grade += param_func_grade() # grade the overlap, of two things, such as bpm
             else:
-                print "%s != %s ; incorrect keys received\n" % (key, key2)
+                print "%s ; inconsistent keys received\n" % (key)
             num_of_params += 1
 
         return (grade/num_of_params) # return the average
@@ -34,7 +38,7 @@ class ParamMethods(object):
     # assign a function to grade two parameters based on the name of the dict key
     # this is meant to allow us to change the parameters that we use flexibly
     def _assign_function(self, key_from_dict):
-        if key_from_dict in 'genre':
+        if key_from_dict in 'notes':
             return self._grade_notes
         elif key_from_dict in 'key':
             return self._grade_key
