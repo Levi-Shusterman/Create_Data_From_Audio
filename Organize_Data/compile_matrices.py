@@ -7,6 +7,7 @@ from data_from_audio_api_mock import * # Adam's API
 class CompileMatrices():
 
     def __init__(self):
+        # api calls
         self.all_song_data = get_song_stats() # a list of dicts
         self.num_of_songs = get_num_of_songs() # gets number of songs from first member of list
 
@@ -29,12 +30,7 @@ class CompileMatrices():
                 grader.grade_parameters( self.all_song_data[x]['middle'],
                                     self.all_song_data[y]['middle'] )
 
-                
                 y = y+1
             x = x+1
-        print 2
-
-def test():
-    X = CompileMatrices()
-    X.compile_matrices()
-test()
+    def overall_matrix_give(self):
+        return self.overall_matrix
