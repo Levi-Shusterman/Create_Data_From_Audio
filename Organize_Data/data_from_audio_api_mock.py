@@ -1,7 +1,7 @@
 
 def get_song_stats():
     list_song_stats = []
-    for i in xrange(20):
+    for x in xrange(20):
         song = {}
         song['name'] = 'max'
         song['bpm'] = 4
@@ -12,6 +12,8 @@ def get_song_stats():
         x['middle'] = song
 
         list_song_stats.append(song)
+
+    return list_song_stats
 
 def get_num_of_songs():
     return 20
