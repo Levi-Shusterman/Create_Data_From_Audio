@@ -1,10 +1,12 @@
 from compile_matrices import CompileMatrices
+import sys
 
 def _get_matrix(filepath):
     X = CompileMatrices(filepath)
     return X.give_matrix()
 
-def get_matrix_api(filepath):
+def get_matrix_api():
+    filepath = sys.argv[1] 
     matrix = _get_matrix(filepath)
 
     with open('matrix_file', 'w') as f:

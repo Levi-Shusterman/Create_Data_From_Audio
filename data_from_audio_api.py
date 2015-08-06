@@ -60,7 +60,10 @@ def parse_signal(audio):
 
     song_stats = {}
     song_stats['bpm'] = int(bpm)
-    song_stats['key'] = key + scale_color
+    if str.find(scale_color, 'major') != -1:
+        song_stats['key'] = key
+    else:
+        song_stats['key'] = key + 'm'
     song_stats['notes'] = note_count
     
     return song_stats
@@ -76,10 +79,10 @@ def analyze_song(filepath):
 
     
 def get_song_stats(filepath): 
-    song_list = parse_input_file(filepath)
+    song_list = parse_input_file(filepath + 'description.txt')
     song_stats = []
     for song in song_list:
-        song_stats.append(analyze_song(song))
+        song_stats.append(analyze_song(filepath + song))
     print song_stats
     return song_stats
 

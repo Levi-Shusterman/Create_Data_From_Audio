@@ -28,7 +28,8 @@ class ParamMethods(object):
                 value2 = second_song[key]
                 # analyze the parameter
                 param_func_grade = self._assign_function(key) # which parameter to analyze?
-                grade += param_func_grade() # grade the overlap, of two things, such as bpm
+                grade += param_func_grade(self.song_one, self.song_two) # grade the overlap, of two things, such as bpm
+                        # grade the overlap, of two things, such as bpm
             else:
                 print "%s ; inconsistent keys received\n" % (key)
             num_of_params += 1
@@ -47,7 +48,9 @@ class ParamMethods(object):
         else:
             return self._zero_func
 
-    def _grade_notes(self, notes1, notes2):
+    def _grade_notes(self, song1, song2):
+        notes1 = song1['notes']
+        notes2 = song2['notes']
         score = 0
         bigger = {}
         smaller = {}
@@ -65,7 +68,9 @@ class ParamMethods(object):
                 score -= 1
         return 50 + score
 
-    def _grade_key(self, key1, key2):
+    def _grade_key(self, song1, song2):
+        key1 = song1['key']
+        key2 = song2['key']
     
         circle_of_fifths = {'C': 0, 'Am' : 0,
                         'G' : 1, 'Em': 1, 
@@ -88,7 +93,9 @@ class ParamMethods(object):
         
         return 99 - 10 * dif
 
-    def _grade_bpm(self, bpm1, bpm2):
+    def _grade_bpm(self, song1, song2):
+        bpm1 = song1['bpm']
+        bpm2 = song2['bpm']
         normalized1 = bpm1/100
         normalized2 = bpm2/100
         return 99 - abs(normalized1 - normalized2)
