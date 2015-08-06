@@ -17,6 +17,9 @@ class ParamMethods(object):
         grade = 0.0
         num_of_params = 0.0
 
+        self.song_one = first_song
+        self.song_two = second_song
+
         # compare two songs
         for (key, value), (key2, value2) in first_song.iteritems(), second_song.iteritems():
             if key == key2:
@@ -32,7 +35,7 @@ class ParamMethods(object):
     # assign a function to grade two parameters based on the name of the dict key
     # this is meant to allow us to change the parameters that we use flexibly
     def _assign_function(self, key_from_dict):
-        if key_from_dict in 'genre':
+        if key_from_dict in 'notes':
             return self._grade_notes
         elif key_from_dict in 'key':
             return self._grade_key
