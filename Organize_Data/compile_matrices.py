@@ -1,15 +1,15 @@
 # Levi Shusterman
 # Israel Tech Challenge Hackathon
 from Organize_Data.analyze_parameters import *
-from data_from_audio_api_mock import * # Adam's API
+from data_from_audio_api import * # Adam's API
 
 
 class CompileMatrices():
 
-    def __init__(self):
+    def __init__(self, filepath):
         # api calls
-        self.all_song_data = get_song_stats() # a list of dicts
-        self.num_of_songs = get_num_of_songs() # gets number of songs from first member of list
+        self.all_song_data = get_song_stats(filepath)   # a list of dicts
+        self.num_of_songs = len(self.all_song_data)  # gets number of songs from first member of list
 
         # puts matrices together
         self.compile_matrices()
