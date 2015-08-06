@@ -1,11 +1,11 @@
 from compile_matrices import CompileMatrices
 
-def get_matrix():
-    X = CompileMatrices()
+def get_matrix(filepath):
+    X = CompileMatrices(filepath)
     return X.overall_matrix_give()
 
-def get_overall_matrix_api():
-    matrix = get_matrix()
+def get_overall_matrix_api(filepath):
+    matrix = get_matrix(filepath)
 
     with open('matrix_file', 'w') as f:
         for row in matrix:
@@ -14,4 +14,4 @@ def get_overall_matrix_api():
                 f.write(' ')
             f.write('\n')
 
-get_overall_matrix_api()
+

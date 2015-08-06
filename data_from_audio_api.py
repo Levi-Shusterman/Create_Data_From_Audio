@@ -9,8 +9,8 @@ def parse_input_file(filepath):
     song_list = []
     with open(filepath) as file:
         for line in file:
-            song_list.append(line)
-    song_list.remove(0)
+            song_list.append(line.rstrip())
+    del song_list[0]
     return song_list
 
 
@@ -59,16 +59,16 @@ def parse_signal(audio):
             note_count[note] += 1
 
     song_stats = {}
-    song_stats['bpm'] = bpm
+    song_stats['bpm'] = int(bpm)
     song_stats['key'] = key + scale_color
-    song_stats['notes-used'] = note_count
+    song_stats['notes'] = note_count
     
     return song_stats
 
 def analyze_song(filepath):
     song_stats = {}
     song_stats['name'] = get_name(filepath)
-    song_stats['beginning'] = parse_signal(get_beginning(filepath))
+    song_stats['begin'] = parse_signal(get_beginning(filepath))
     song_stats['middle'] = parse_signal(get_middle(filepath))
     song_stats['end'] = parse_signal(get_end(filepath))
     print song_stats
