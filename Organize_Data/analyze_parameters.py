@@ -5,11 +5,11 @@ import math
 
 class ParamMethods(object):
 
-    def __init__(self, genre = 1, key = 1, bpm = 1):
+    def __init__(self, note = 1, key = 1, bpm = 1):
         # we can override these later based on our research
         # these constructor variables must add up to a whole number
         # that is equal to how many they are
-        self.genre_weight = genre
+        self.note_weight = note
         self.key_weight = key
         self.bpm_weight = bpm
 
@@ -66,7 +66,7 @@ class ParamMethods(object):
                 score += 1
             else:
                 score -= 1
-        return 50 + score
+        return self.note_weight * (50 + score)
 
     def _grade_key(self, song1, song2):
         key1 = song1['key']
@@ -91,14 +91,14 @@ class ParamMethods(object):
         if dif > 6:
             dif = 6 - dif % 6
         
-        return 99 - 10 * dif
+        return self.key_weight*(99 - 10 * dif)
 
     def _grade_bpm(self, song1, song2):
         bpm1 = song1['bpm']
         bpm2 = song2['bpm']
         normalized1 = bpm1/100
         normalized2 = bpm2/100
-        return 99 - abs(normalized1 - normalized2)
+        return self.bpm_weight*(99 - abs(normalized1 - normalized2))
     
     def _zero_func(self):
         return 0
