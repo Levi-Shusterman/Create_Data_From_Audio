@@ -5,7 +5,7 @@ import math
 
 class ParamMethods(object):
 
-    def __init__(self, note = 1, key = 1, bpm = 1):
+    def __init__(self, note =.5 , key = 1, bpm = 2):
         # we can override these later based on our research
         # these constructor variables must add up to a whole number
         # that is equal to how many they are
@@ -33,6 +33,7 @@ class ParamMethods(object):
                         # grade the overlap, of two things, such as bpm
             else:
                 print "%s ; inconsistent keys received\n" % (key)
+            num_of_params += 1
 
         return (grade/self.num_of_params) # return the average
 
