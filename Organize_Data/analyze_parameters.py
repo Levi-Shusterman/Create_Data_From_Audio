@@ -12,6 +12,7 @@ class ParamMethods(object):
         self.note_weight = note
         self.key_weight = key
         self.bpm_weight = bpm
+        self.num_of_params = self.note_weight+self.key_weight+self.bpm_weight
 
     # Returns a grade for a transition betweeen two songs
     def grade_parameters( self, first_song, second_song):
@@ -32,9 +33,8 @@ class ParamMethods(object):
                         # grade the overlap, of two things, such as bpm
             else:
                 print "%s ; inconsistent keys received\n" % (key)
-        num_of_params = 3.5
-
-        return (grade/num_of_params) # return the average
+        
+        return (grade/self.num_of_params) # return the average
 
     # assign a function to grade two parameters based on the name of the dict key
     # this is meant to allow us to change the parameters that we use flexibly

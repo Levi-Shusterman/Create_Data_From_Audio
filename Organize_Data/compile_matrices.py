@@ -20,20 +20,15 @@ class CompileMatrices():
         self.transition_matrix = [[0 for x in range(size)] for x in range(size)]
 
         grader = ParamMethods()
-        x = 0
 
         size = self.num_of_songs
         self.overall_matrix = [[0 for x in range(size)] for x in range(size)]
         self.transition_matrix = [[0 for x in range(size)] for x in range(size)]
 
         grader = ParamMethods()
-        x = 0
 
-        while x < size:
-
-            z = 0
-            while z < size:
-
+        for x in range(0, size):
+            for z in range(0, size):
                 if x == z:
                     self.transition_matrix[x][z] = -1000
                     self.overall_matrix[x][z] = -1000
@@ -41,18 +36,11 @@ class CompileMatrices():
                     self.transition_matrix[x][z] = \
                     grader.grade_parameters(self.all_song_data[x]['end'],
                                             self.all_song_data[z]['begin'])
-
-                z = z+1
-
-            y = x + 1
-            while y < size:
-
-                self.overall_matrix[x][y] = \
-                grader.grade_parameters( self.all_song_data[x]['middle'],
-                                    self.all_song_data[y]['middle'] )
-                self.overall_matrix[y][x] = self.overall_matrix[x][y]
-                y = y+1
-            x = x+1
+                if x > z:
+                    self.overall_matrix[x][y] = \
+                    grader.grade_parameters( self.all_song_data[x]['middle'],
+                                        self.all_song_data[y]['middle'] )
+                    self.overall_matrix[y][x] = self.overall_matrix[x][z]
 
     def _overall_matrix_give(self):
         return self.overall_matrix
