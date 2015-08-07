@@ -32,7 +32,7 @@ class ParamMethods(object):
                         # grade the overlap, of two things, such as bpm
             else:
                 print "%s ; inconsistent keys received\n" % (key)
-        num_of_params = 3.5:
+        num_of_params = 3.5
 
         return (grade/num_of_params) # return the average
 
@@ -63,9 +63,9 @@ class ParamMethods(object):
 
         for note in bigger:
             if note in smaller:
-                score += 1
+                score += 3
             else:
-                score -= 1
+                score -= 3
         return self.note_weight * (50 + score)
 
     def _grade_key(self, song1, song2):
@@ -91,7 +91,7 @@ class ParamMethods(object):
         if dif > 6:
             dif = 6 - dif % 6
         
-        return self.key_weight*(99 - 10 * dif)
+        return self.key_weight*(99 - 15 * dif)
 
     def _grade_bpm(self, song1, song2):
         bpm1 = song1['bpm']

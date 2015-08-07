@@ -24,21 +24,27 @@ def get_beginning(filepath):
     audio = MonoLoader(filename =filepath)()
     duration_finder = Duration()
     duration = duration_finder(audio)
-    return EasyLoader(filename =filepath, startTime=duration*.1, endTime=duration*.15)()
+    if duration > 60:
+        return EasyLoader(filename =filepath, startTime=duration*.1, endTime=duration*.1+15)
+    return EasyLoader(filename =filepath, startTime=duration*.1, endTime=duration*.3)()
 
 
 def get_middle(filepath):
     audio = MonoLoader(filename =filepath)()
     duration_finder = Duration()
     duration = duration_finder(audio)
-    return EasyLoader(filename =filepath, startTime=duration*.4, endTime=duration*.45)()
+    if duration > 60:
+        return EasyLoader(filename =filepath, startTime=duration*.4, endTime=duration*.4+15)
+    return EasyLoader(filename =filepath, startTime=duration*.4, endTime=duration*.6)()
 
 
 def get_end(filepath):
     audio = MonoLoader(filename =filepath)()
     duration_finder = Duration()
     duration = duration_finder(audio)
-    return EasyLoader(filename =filepath, startTime=duration*.7, endTime=duration*.75)()
+    if duration > 60:
+        return EasyLoader(filename =filepath, startTime=duration*.7, endTime=duration*.7+15)
+    return EasyLoader(filename =filepath, startTime=duration*.7, endTime=duration*.9)()
 
 
 def parse_signal(audio):
