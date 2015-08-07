@@ -18,8 +18,6 @@ class ParamMethods(object):
     def grade_parameters( self, first_song, second_song):
     # iterate through kwargs and give a grade based on each parameter, take the average
         grade = 0.0
-        num_of_params = 0.0
-
         self.song_one = first_song
         self.song_two = second_song
 

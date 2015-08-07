@@ -37,11 +37,11 @@ class CompileMatrices():
                     grader.grade_parameters(self.all_song_data[x]['end'],
                                             self.all_song_data[z]['begin'])
                 if x > z:
-                    self.overall_matrix[x][y] = \
+                    self.overall_matrix[x][z] = \
                     grader.grade_parameters( self.all_song_data[x]['middle'],
-                                        self.all_song_data[y]['middle'] )
-                    self.overall_matrix[y][x] = self.overall_matrix[x][z]
-
+                                        self.all_song_data[z]['middle'] )
+                    self.overall_matrix[z][x] = self.overall_matrix[x][z]
+    
     def _overall_matrix_give(self):
         return self.overall_matrix
 
